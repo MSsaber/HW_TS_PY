@@ -1,5 +1,6 @@
 
 import socket
+import excel_tool
 
 def receive_file(filename, host, port):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -16,4 +17,5 @@ def receive_file(filename, host, port):
     print('File received successfully.')
 
 if __name__ == '__main__':
-    receive_file('example.txt', 'localhost', 9120)
+    receive_file('receive_excel.txt', '192.168.1.4', 9120)
+    excel_tool.serialize_excel(False, 'receive_excel.txt', '221zc_table.xlsx')
