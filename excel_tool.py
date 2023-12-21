@@ -62,7 +62,7 @@ def serialize_excel(is_write, input_file, output_file):
                         else:
                             row_data.append(table.row_values(i)[data_index])
                 sheet_data.append(row_data)
-                table_row_data[k] = sheet_data
+                table_row_data[sn] = sheet_data
         #按照 格式：每行数据以空格间隔，表头一样 写入到文件中
         write_excel_txt(table_row_data, output_file)
     #将txt文件内容导入至excel
@@ -88,7 +88,7 @@ def serialize_excel(is_write, input_file, output_file):
                     for col_index in range(len(table[row_index])):
                         #从成绩列开始计算智测
                         if col_index >= credit_col and not isinstance(table[row_index][col_index],str):
-                            row_sum += table[row_index][col_index]
+                            row_sum += table[credit_row][col_index]
                             row_total += table[credit_row][col_index] * table[row_index][col_index]
                     table[row_index].append(round(row_total/row_sum,3) if row_sum != 0 else 0)
             return table_datas

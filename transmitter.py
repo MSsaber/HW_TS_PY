@@ -1,4 +1,5 @@
 import socket
+import excel_tool
 
 def send_file(filename, host, port):
     with open(filename, 'rb') as f:
@@ -9,4 +10,5 @@ def send_file(filename, host, port):
     print('File sent successfully.')
 
 if __name__ == '__main__':
-    send_file('temp_data.txt', 'localhost', 9120)
+    excel_tool.serialize_excel(True, '221综测表.xlsx', 'temp_data.txt')
+    send_file('temp_data.txt', '192.168.1.4', 9120)
